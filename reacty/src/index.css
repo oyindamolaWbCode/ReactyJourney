@@ -6,3 +6,8 @@ font-family: Courier, monospace;
 h1{
   font-size: 22px;
 }
+
+.card-collection{
+  display:grid;
+  grid-template-columns: 1fr 1fr 1fr ;
+}

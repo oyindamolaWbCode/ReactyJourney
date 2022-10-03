@@ -1,4 +1,6 @@
 import { useState } from "react";
+import femaleProfile from "../Images/femaleProfile.jpg";
+import maleProfile from "../Images/maleProfile.jpg";
 
 const Employees = () => {
   //tracks the usestate of the employees
@@ -90,17 +92,33 @@ const Employees = () => {
   ]);
 
   return (
-    <div className="names">
-      {/* <p>names</p>
-      {employees.map((employee) => {
-        <p>{employee.fullName}</p>;
-      })} */}
-      {employees.map((employee)=> (
+    <main className="container">
+      {/* {employees.map((employee)=> (
         <div className="employee-preview" key={employee.id}>
-          <h2>{employee.fullName}</h2>
+          <p>{employee.teamName}</p>
+          <h4>{employee.fullName}</h4>
+          <img src={femaleProfile}/>
           </div>
-      ))}
-    </div>
+      ))} */}
+      {/* to render each of the map array */}
+      <div class="row justify-content-center mt-3 mb-3">
+        <div class="col-8">
+          <div class="card-collection">
+          {employees.map((employee) => (
+            <div id={employee.id} className="card m-2" style={{cursor:"pointer"}}>
+              {/* to iterate over the image and gender */}
+              {(employee.gender === 'female') ? <img src={femaleProfile} alt="" className="card-img-top" />
+              :<img src={maleProfile} alt="" className="card-img-top" />}
+              <div className="card-body">
+                <h5 className="card-title">Full Name: {employee.fullName}</h5>
+                <p className="card-text"><b>Designation:</b> {employee.designation}</p>
+              </div>
+            </div>
+          ))}
+          </div>
+        </div>
+      </div>
+    </main>
   );
 };
 
