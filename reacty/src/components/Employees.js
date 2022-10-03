@@ -91,10 +91,15 @@ const Employees = () => {
 
   return (
     <div className="names">
-      <p>names</p>
+      {/* <p>names</p>
       {employees.map((employee) => {
         <p>{employee.fullName}</p>;
-      })}
+      })} */}
+      {employees.map((employee)=> (
+        <div className="employee-preview" key={employee.id}>
+          <h2>{employee.fullName}</h2>
+          </div>
+      ))}
     </div>
   );
 };
