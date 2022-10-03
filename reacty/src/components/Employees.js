@@ -3,6 +3,8 @@ import femaleProfile from "../Images/femaleProfile.jpg";
 import maleProfile from "../Images/maleProfile.jpg";
 
 const Employees = () => {
+//we can select a team from the drop down
+  const [selectedTeam, setTeam] = useState("TeamB")
   //tracks the usestate of the employees
   const [employees, setEmployees] = useState([
     {
@@ -90,6 +92,17 @@ const Employees = () => {
       teamName: "TeamD",
     },
   ]);
+//select the drop down clicked
+  function handleTeamSelectionChange(event){
+    setTeam(event.target.value);
+  }
+
+  //to removed the unclicked and show the relevant clicked.
+  function handleEmployeeCardClick(event){
+    const transformedEmployees = employees.map((employee) => employee.id === parseInt(event.currentTarget.id)?(employee.teamName === selectedTeam)?{...employee, teamName: ''}:{...employee, teamName: selectedTeam}:employee);
+
+    setEmployees(transformedEmployees);
+  }
 
   return (
     <main className="container">
@@ -101,11 +114,21 @@ const Employees = () => {
           </div>
       ))} */}
       {/* to render each of the map array */}
-      <div class="row justify-content-center mt-3 mb-3">
-        <div class="col-8">
-          <div class="card-collection">
+      <div className="row justify-content-center mt-3 mb-3">
+        <div className="col-6">
+          <select className="form-select form-select-lg" value={selectedTeam} onChange={handleTeamSelectionChange}>
+            <option value="TeamA">Team A</option>
+            <option value="TeamB">Team B</option>
+            <option value="TeamC">Team C</option>
+            <option value="TeamD">Team D</option>
+          </select>
+          </div>
+        </div>
+      <div className="row justify-content-center mt-3 mb-3">
+        <div className="col-8">
+          <div className="card-collection">
           {employees.map((employee) => (
-            <div id={employee.id} className="card m-2" style={{cursor:"pointer"}}>
+            <div id={employee.id} className={(employee.teamName === selectedTeam?'card m-2 standout' : 'card m-2')} onClick={handleEmployeeCardClick}>
               {/* to iterate over the image and gender */}
               {(employee.gender === 'female') ? <img src={femaleProfile} alt="" className="card-img-top" />
               :<img src={maleProfile} alt="" className="card-img-top" />}
