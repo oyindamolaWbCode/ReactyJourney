@@ -6,6 +6,8 @@ import Footer from "./components/Footer";
 import Employees from "./components/Employees";
 import { Route, Routes } from "react-router-dom";
 import GroupedTeamMembers from "./components/GroupedMembers";
+import Nav from "./components/Nav";
+import NotFound from "./components/NotFound";
 
 const App = () => {
 
@@ -121,9 +123,10 @@ const App = () => {
 
   return (
     <div className="content">
+      < Nav />
      < Header selectedTeam={selectedTeam}
        teamMemberCount={employees.filter((employee) => employee.teamName === selectedTeam).length}/>
-       
+
       <Routes>
         <Route path="/" element={<Employees employees={employees}
           selectedTeam={selectedTeam}
@@ -132,6 +135,8 @@ const App = () => {
            />} />
 
             <Route path="/GroupedTeamMembers" element={<GroupedTeamMembers />} />
+
+            <Route path="*" element={<NotFound />} />
       </Routes>
       < Footer />
     </div>
