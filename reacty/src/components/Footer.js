@@ -11,7 +11,7 @@ const Footer = () => {
         //     </nav>
         // </div>
         <footer className="container">
-            <div className="row-justify-content-center mt-3 mt4">
+            <div className="row justify-content-center mt-3 mb-3">
                 <div className="col-8">
                     <h5>Team Allocation App - {today.getFullYear()}</h5>
                 </div>
