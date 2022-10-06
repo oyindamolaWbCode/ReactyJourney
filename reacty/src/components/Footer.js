@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
 
-    var today = new Date();
+    let today = new Date();
     return ( 
         // <div className="footer-page">
         //     <nav>

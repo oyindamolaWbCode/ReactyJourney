@@ -5,6 +5,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Employees from "./components/Employees";
 import { Route, Routes } from "react-router-dom";
+import GroupedTeamMembers from "./components/GroupedMembers";
 
 const App = () => {
 
@@ -120,24 +121,54 @@ const App = () => {
 
   return (
     <div className="content">
-      <div>
-      <Header selectedTeam={selectedTeam}
-      teamMemberCount={employees.filter((employee) => employee.teamName === selectedTeam).length}/>
+     < Header selectedTeam={selectedTeam}
+       teamMemberCount={employees.filter((employee) => employee.teamName === selectedTeam).length}/>
+       
+      <Routes>
+        <Route path="/" element={<Employees employees={employees}
+          selectedTeam={selectedTeam}
+           handleEmployeeCardClick={handleEmployeeCardClick}
+           handleTeamSelectionChange={handleTeamSelectionChange}
+           />} />
+
+            <Route path="/GroupedTeamMembers" element={<GroupedTeamMembers />} />
+      </Routes>
+      < Footer />
+    </div>
+    
+  
+  );
+};
+
+
+      {/* <div>
       <Employees employees={employees}
         selectedTeam={selectedTeam}
         handleEmployeeCardClick={handleEmployeeCardClick}
         handleTeamSelectionChange={handleTeamSelectionChange}
         />
       <Footer />
-      </div>
-      <Routes>
-        <Route path="/header" element={<Header />} />
-        {/* <Route path="/content" element={<Content />} /> */}
-        <Route path="/footer" element={<Footer />} />
-        <Route path="/employees" element={<Employees />} />
-      </Routes>
-    </div>
-  );
-};
-
+      </div> */}
+    //   <Router>
+    //     <div className="content">
+    //      <Header selectedTeam={selectedTeam}
+    //   teamMemberCount={employees.filter((employee) => employee.teamName === selectedTeam).length}/>
+    //   <Routes>
+    //     {/* <Route path="/header" element={<Header />} /> */}
+    //     {/* <Route path="/content" element={<Content />} /> */}
+    //     <Route path="/" element={<Employees employees={employees}
+    //       selectedTeam={selectedTeam}
+    //       handleEmployeeCardClick={handleEmployeeCardClick}
+    //       handleTeamSelectionChange={handleTeamSelectionChange}
+    //       />}>
+          
+    //    </Route>
+    //    <Route>
+    //     <Route path="/GroupedTeamMembers" element={<GroupedTeamMembers />}>
+    //    </Route>
+    //     <Route path="/footer" element={<Footer />} />
+    //    <Routes /> 
+    // </div>
+    // </Router>
+ 
 export default App;

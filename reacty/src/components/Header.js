@@ -2,8 +2,8 @@ const Header = ({selectedTeam, teamMemberCount}) => {
 
     return ( 
         <header>
-        <h1>Team Member Allocation</h1>
-        <h3>{selectedTeam} has {teamMemberCount}</h3>
+        <h2>Team Member Allocation</h2>
+        <h4>{selectedTeam} has {teamMemberCount} Members</h4>
         </header>
      );
 }
