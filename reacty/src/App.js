@@ -134,7 +134,7 @@ const App = () => {
            handleTeamSelectionChange={handleTeamSelectionChange}
            />} />
 
-            <Route path="/GroupedTeamMembers" element={<GroupedTeamMembers employees= {employees} selectedTeam= {selectedTeam} setTeam ={setTeam} />} />
+            <Route path="/GroupedTeamMembers" element={<GroupedTeamMembers employees= {employees} selectedTeam= {selectedTeam} setTeam = {setTeam} />} />
 
             <Route path="*" element={<NotFound />} />
       </Routes>

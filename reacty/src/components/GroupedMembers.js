@@ -7,6 +7,7 @@ const GroupedTeamMembers = ({employees, selectedTeam, setTeam}) => {
     function groupTeamMembers()
     {
         let teams = [];
+
         let teamAMembers = employees.filter((employee) => employee.teamName === 'TeamA');
         let teamA = {team: 'teamA', members:teamAMembers, collapsed:selectedTeam === 'TeamA'?false:true}
         teams.push(teamA);
@@ -23,13 +24,22 @@ const GroupedTeamMembers = ({employees, selectedTeam, setTeam}) => {
         let teamD = {team: 'teamD', members:teamDMembers, collapsed:selectedTeam === 'TeamD'?false:true}
         teams.push(teamD);
     }
+
+    function handleTeamClick(event){
+
+        let transformedGroupData = GroupedEmployees.map((groupedData)=> groupedData.team === event.currentTarget.id ?{...groupedData,collapsed:!groupedData.collapsed}:groupedData);
+    
+        setGroupedData(transformedGroupData);
+        setTeam(event.currentTarget.id);
+    }
+
     return ( 
         <div className="containers">
             {
                 GroupedEmployees.map((item) =>{
                     return(
                         <div key={item.team} className="card mt-2" style ={{cursor: "ponter"}}>
-                            <h4 id={item.team} className="card-header text-bg-secondary bg-white">
+                            <h4 id={item.team} className="card-header text-bg-secondary bg-white" onClick={handleTeamClick}>
                                 Team name: {item.team}
                             </h4>
                     )
